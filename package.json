@@ -1,0 +1,19 @@
+{
+  "name": "metal",
+  "version": "1.0.0",
+  "description": "Metal Gear Solid 1 PSX Tools",
+  "main": "",
+  "scripts": {
+    "radio-exporter": "npx tsx ./src/radio/Exporter.ts",
+    "radio-importer": "npx tsx ./src/radio/Importer.ts"
+  },
+  "author": "iseeeva",
+  "license": "ISC",
+  "dependencies": {
+    "r_lib": "iseeeva/r_lib#916db33d2154b4187e4afdea0fb4c9430017982c",
+    "tsx": "^3.12.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
