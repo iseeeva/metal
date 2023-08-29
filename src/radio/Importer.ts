@@ -110,4 +110,9 @@ for (const Container in Map) {
   })
 }
 
+fs.appendFileSync(
+  Output.Radio,
+  Radio.subarray(Location, Radio.length),
+)
+
 fs.writeFileSync(Output.Stage, Stage)
