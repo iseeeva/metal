@@ -1,0 +1,40 @@
+{
+  "name": "metal",
+  "description": "Metal Gear Solid 1 PSX Tools",
+  "version": "1.0.3",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "repository": {
+    "url": "git://github.com/iseeeva/metal.git"
+  },
+  "pkg": {
+    "targets": ["node16-win-x64"],
+    "outputPath": "build"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "index": "node dist/index.js",
+    "build-pkg": "pkg .",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "lint": "eslint src/**/*.ts",
+    "lint-fix": "eslint --fix src/**/*.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@twisine/r_lib": "1.0.5",
+    "tsx": "4.7.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "0.34.0",
+    "@types/node": "20.11.5",
+    "typescript": "5.3.2",
+    "eslint": "8.56.0",
+    "pkg": "5.8.1"
+  }
+}
