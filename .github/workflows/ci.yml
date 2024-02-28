@@ -1,0 +1,71 @@
+# This workflow checks linting and type checking for a Node.js project.
+
+name: Check and Build
+
+on:
+  push:
+    paths-ignore:
+      - ".gitignore"
+      - ".gitattributes"
+      - ".vscode/**"
+      - "README.md"
+  pull_request:
+    paths-ignore:
+      - ".gitignore"
+      - ".gitattributes"
+      - ".vscode/**"
+      - "README.md"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Check Linting
+        run: npm run lint
+
+      - name: Check Typing
+        run: npm run typecheck
+  build:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        if: success()
+        run: npm run build-ts
+
+      - name: Run Project
+        if: success()
+        run: npm run index
+
+      - name: Build with PKG
+        if: success()
+        run: npm run build-pkg
+
+      - name: Upload as Artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metal
+          path: build/metal.exe
