@@ -4,9 +4,12 @@ name: Type Checking
 
 on:
   push:
-    branches: [main, experimental]
+    branches:
+      - main
+      - experimental
   pull_request:
-    branches: [experimental]
+    branches:
+      - experimental
 
 jobs:
   check:
