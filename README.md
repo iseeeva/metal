@@ -1,19 +1,31 @@
-# Metal Gear Solid 1 PSX Tools (WIP)
-Metal Gear Solid 1 PSX Tools<br>
-by [@iseeeva](https://github.com/iseeeva) and [@peymil](https://github.com/peymil)
+### Metal Gear Solid 1 PSX Tools (Work in Progress)
+
+A Toolbox for Metal Gear Solid 1 PSX. <br>
+by [@iseeeva](https://github.com/iseeeva) and [@peymil](https://github.com/peymil).
 
 #### Installation
-This Repository is a NodeJS project.<br> For using commands, first download NodeJS and after download dependencies with ```npm i```
 
-## Radio
-#### radio-exporter
-```
-  npm run radio-exporter <RADIO.DAT> <STAGE.DIR>
-```
-#### radio-importer
-```
-  npm run radio-importer <RADIO.EXPORT.JSON> <RADIO.DAT> <STAGE.DIR>
+> This repository is a Node.js project. <br>
+> To use the commands, you need to have Node.js installed. <br>
+
+> Alternatively, you can get action builds from [here](https://github.com/iseeeva/metal/actions).
+
+```bash
+# Install dependencies
+$ npm install
+
+# Build project
+$ npm run build-ts
+
+# Start project
+$ npm run index
 ```
 
-## Credits
-`@green_goblin - for STAGE.DIR informations`
+#### Scripts
+
+- Radio
+  - radio-importer
+  - radio-exporter
+
+#### Credits
+`green_goblin for STAGE.DIR informations`
