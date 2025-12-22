@@ -8,17 +8,15 @@ by [@iseeeva](https://github.com/iseeeva) and [@peymil](https://github.com/peymi
 > This repository is a Node.js project. <br>
 > To use the commands, you need to have Node.js installed. <br>
 
-> Alternatively, you can get action builds from [here](https://github.com/iseeeva/metal/actions).
-
 ```bash
 # Install dependencies
 $ npm install
 
 # Build project
-$ npm run build-ts
+$ npm run ts:build
 
 # Start project
-$ npm run index
+$ npm run start
 ```
 
 #### Scripts

@@ -1,23 +1,22 @@
 {
-    "compilerOptions": {
-      "moduleResolution": "Node",
-      "module": "CommonJS",
-      "target": "ES2017",
-      "outDir": "./dist",
-      "baseUrl": "./src",
-      "isolatedModules": true,
-      "esModuleInterop": true,
-      "declaration": false,
-      "paths": {
-        "*": [
-          "node_modules/*"
-        ]
-      },
-      "typeRoots": [
-        "node_modules/@types",
-      ]
+  "compilerOptions": {
+    "target": "ES2022",
+    "baseUrl": "./src",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "paths": {
+      "*": ["node_modules/*"]
     },
-    "include": [
-      "src/**/*"
-    ]
-  }
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "strictNullChecks": true,
+    "declaration": false,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

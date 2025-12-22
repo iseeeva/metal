@@ -1,34 +1,32 @@
-import fs from 'fs'
-import { Convert } from '@twisine/r_lib'
+import fs from 'node:fs'
 
 export class Stage {
-  static Finder(File: string) {
-    if (File == null)
+  static searchContainerReferences(file: string) {
+    if (!file)
       throw new Error('File is not defined')
-    else if (!fs.existsSync(File))
-      throw new Error(`File does not exist (${File})`)
+    if (!fs.existsSync(file))
+      throw new Error(`File does not exist (${file})`)
 
-    const Stream = fs.readFileSync(File)
-    const Database: { [Offset: string]: Array<number> } = {}
+    const fileReader = fs.readFileSync(file)
+    const database: { [containerOffset: string]: number[] | undefined } = {}
 
     for (let i = 14000; i < 14300; i++) {
-      let Position = 0
-      const Content = Buffer.from(`01${Convert.toBuffer(i, 'int16').toString('hex')}0A`, 'hex')
+      let position = 0
 
-      while (Stream.includes(Content, Position)) {
-        const Stage = Stream.indexOf(Content, Position)
-        const Radio = Stream.readUintBE(Stage + 5, 3)
+      const pattern = Buffer.from(new Uint8Array([0x01, 0x00, 0x00, 0x0A]))
+      pattern.writeUint16BE(i, 1) // add freq int to pattern
 
-        if (Database[Radio] == null)
-          Database[Radio] = []
+      let patternOffset = -1
+      while ((patternOffset = fileReader.indexOf(pattern, position)) !== -1) {
+        /** offset reference to radio.dat container */
+        const containerOffset = fileReader.readUintBE(patternOffset + 5, 3)
 
-        Database[Radio].push(Stage)
-
-        // console.log(Search, i, Radio, Stage)
-        Position = Stage + 1
+        database[containerOffset] ??= []
+        database[containerOffset].push(patternOffset)
+        position = patternOffset + 1
       }
     }
 
-    return Database
+    return database
   }
 }

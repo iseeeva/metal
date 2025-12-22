@@ -1,0 +1,23 @@
+export enum RadioCode {
+  NULL = 0x00,
+  SUBTITLE = 0x01,
+  VOICE = 0x02,
+  ANIM = 0x03,
+  ADD_CONTACT = 0x04,
+  MEM_SAVE = 0x05,
+  AUDIO = 0x06,
+  PROMPT = 0x07,
+  SAVE = 0x08,
+
+  IF = 0x10,
+  ELSE = 0x11,
+  ELSE_IF = 0x12,
+
+  SWITCH = 0x30,
+  SWITCH_OP = 0x31,
+
+  EVAL = 0x40,
+
+  SCRIPT = 0x80,
+  ENDLINE = 0xFF,
+}
